@@ -1,26 +1,42 @@
 package editDistanceAnagraph;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 enum Atom {
-	C, E, O, R, S, DOT, LINE, SCOOP
+	C("c"), E("e"), O("o"), R("r"), S("s"), DOT("."), LINE("|"), SCOOP(")");
+
+	final String str;
+
+	Atom(String string) {
+		str = string;
+	}
 };
 
 public class Anagraph {
-	public static Set<Atom> toAtomList(String in) {
+	public static String getAtomEncoding(String inStr) {
+		return atomListToString(getAtomList(inStr));
+	}
+
+	public static String atomListToString(List<Atom> atoms) {
+		return atoms.stream().map(at -> at.str).collect(Collectors.joining());
+	}
+
+	public static List<Atom> getAtomList(String in) {
 		if (in == null)
 			throw new IllegalArgumentException("Input cannot be null");
 		if (in.isEmpty())
-			return Set.of();
+			return List.of();
 
-		Set<Atom> components = new HashSet<>();
+		List<Atom> components = new ArrayList<>();
 
-		// Fo
+		// For each letter, add the atoms
 		for (var c : in.toCharArray()) {
-
+			components.addAll(charToAtoms(c));
 		}
+		Collections.sort(components);
 		return components;
 	}
 
