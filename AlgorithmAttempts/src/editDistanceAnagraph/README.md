@@ -1,0 +1,2 @@
+This is a tool for finding <i>hopefully</i> visually similar words or sentences using anagraphs. Anagraphs are the componenets that make up letters that can be used to build up other letters.
+The anagraph idea and breakdowns are largely based on this youtube video by suckerpinch https://www.youtube.com/watch?v=qTBAW-Eh0tM.
