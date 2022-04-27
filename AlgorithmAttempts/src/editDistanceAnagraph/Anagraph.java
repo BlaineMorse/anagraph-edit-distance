@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 enum Atom {
-	C("c"), E("e"), O("o"), R("r"), S("s"), DOT("."), LINE("|"), SCOOP(")");
+	C("c"), E("e"), O("o"), R("r"), S("s"), DOT("."), DASH("-"), HOOK(")");
 
 	final String str;
 
@@ -43,36 +43,36 @@ public class Anagraph {
 	private static List<Atom> charToAtoms(char c) {
 		switch (c) {
 		case 'a':
-			return List.of(Atom.C, Atom.C, Atom.LINE);
+			return List.of(Atom.C, Atom.DASH);
 		case 'b':
 		case 'd':
 		case 'p':
 		case 'q':
-			return List.of(Atom.C, Atom.LINE, Atom.LINE);
+			return List.of(Atom.C, Atom.DASH, Atom.DASH);
 		case 'c':
 			return List.of(Atom.C);
 		case 'e':
 			return List.of(Atom.E);
 		case 'f':
-			return List.of(Atom.LINE, Atom.LINE, Atom.SCOOP);
+			return List.of(Atom.DASH, Atom.DASH, Atom.HOOK);
 		case 'g':
-			return List.of(Atom.C, Atom.LINE, Atom.R);
+			return List.of(Atom.C, Atom.DASH, Atom.R);
 		case 'h':
-			return List.of(Atom.LINE, Atom.R, Atom.LINE);
+			return List.of(Atom.DASH, Atom.R, Atom.DASH);
 		case 'i':
-			return List.of(Atom.LINE, Atom.DOT);
+			return List.of(Atom.DASH, Atom.DOT);
 		case 'j':
-			return List.of(Atom.LINE, Atom.LINE, Atom.DOT);
+			return List.of(Atom.DASH, Atom.R, Atom.DOT);
 		case 'k':
-			return List.of(Atom.LINE, Atom.LINE, Atom.LINE, Atom.LINE);
+			return List.of(Atom.DASH, Atom.DASH, Atom.DASH, Atom.DASH);
 		case 'l':
-			return List.of(Atom.LINE, Atom.LINE);
+			return List.of(Atom.DASH, Atom.DASH);
 		case 'm':
 		case 'w':
-			return List.of(Atom.R, Atom.R, Atom.LINE);
+			return List.of(Atom.R, Atom.R, Atom.DASH);
 		case 'n':
 		case 'u':
-			return List.of(Atom.R, Atom.LINE);
+			return List.of(Atom.R, Atom.DASH);
 		case 'o':
 			return List.of(Atom.O);
 		case 'r':
@@ -80,20 +80,18 @@ public class Anagraph {
 		case 's':
 			return List.of(Atom.S);
 		case 't':
-			return List.of(Atom.LINE, Atom.LINE, Atom.LINE);
+			return List.of(Atom.DASH, Atom.DASH, Atom.DASH);
 		case 'v':
-			return List.of(Atom.LINE, Atom.LINE);
+			return List.of(Atom.DASH, Atom.DASH);
 		case 'x':
-			return List.of(Atom.LINE, Atom.LINE);
+			return List.of(Atom.DASH, Atom.DASH);
 		case 'y':
-			return List.of(Atom.SCOOP, Atom.R, Atom.LINE, Atom.LINE);
+			return List.of(Atom.HOOK, Atom.R, Atom.DASH, Atom.DASH);
 		case 'z':
-			break;
+			return List.of(Atom.DASH, Atom.DASH, Atom.DASH);
 		default:
 			throw new UnsupportedOperationException(
 					String.format("The character %s is not currently mapped to atoms.", c));
 		}
-		throw new UnsupportedOperationException(String.format("Trobule parsing %s", c));
-
 	}
 }
