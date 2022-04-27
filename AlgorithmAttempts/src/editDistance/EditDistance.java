@@ -1,3 +1,4 @@
+package editDistance;
 
 public class EditDistance {
 	private static int[][] distance;
